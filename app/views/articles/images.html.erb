@@ -1,0 +1,22 @@
+<%= form_with url: images_path, method: :get do |f| %>
+  <div>
+    <%= f.label :user_id, "User ID" %>
+    <%= f.text_field :user_id, value: params[:user_id] %>
+  </div>
+  <div>
+    <%= f.submit "Submit" %>
+  </div>
+<% end %>
+
+<% unless @images.nil? %>
+  <% if @images.empty? %>
+    <p>No images found</p>
+  <% else %>
+    <h2>Images</h2>
+    <% @images.each do |image_url| %>
+      <div>
+        <%= image_tag image_url %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
